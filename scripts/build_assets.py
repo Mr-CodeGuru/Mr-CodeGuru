@@ -8,6 +8,7 @@ Edit the CONTENT section to change any text.
 from __future__ import annotations
 
 from html import escape
+from textwrap import wrap as wrap_text
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -50,11 +51,52 @@ NAME = "Aman Yadav"
 GH_URL = "https://github.com/Mr-CodeGuru"
 LI_URL = "https://linkedin.com/in/aman-yadav-codeguru"
 
-PROJECTS: list[tuple[str, str]] = [
-    ("LOOMIS", "RUST · PYTHON · LANCEDB · LLAMA.CPP · HYBRID RAG · LOCAL SLM"),
-    ("CONDUIT", "RUST · SOLIDJS · TYPESCRIPT · SQLITE · AXUM · MCP"),
-    ("MARKITDOWN-RUST-PY", "RUST · PYO3 · PYTHON · MARKDOWN"),
-    ("POSEFIT WEB", "RUST · WASM · MEDIAPIPE · REACT · VERCEL"),
+PROJECTS: list[tuple[str, str, str]] = [
+    ("ORCHESTRA",
+     "A cloud-native, node-based platform for designing, running and deploying AI pipelines through a visual "
+     "interface. Models, tools, data sources and processing steps connect as modular, reusable nodes, so complex "
+     "workflows come together without extensive boilerplate. Built for both experimentation and production, it "
+     "supports cloud execution and scalable orchestration, and any workflow can be exported as an API endpoint to "
+     "plug into applications, automate tasks or run as a production service. The goal is one environment that "
+     "carries an idea from rapid prototype to large-scale cloud execution, with flexibility and developer "
+     "experience first.",
+     "NODE-BASED WORKFLOWS · AI PIPELINES · CLOUD EXECUTION · API EXPORT"),
+    ("LOOMIS",
+     "A fully local, terminal-based code assistant in the spirit of Claude Code and Gemini CLI, but with no cloud "
+     "dependency. A small language model served through llama.cpp answers questions over a codebase using "
+     "retrieval-augmented generation: code is embedded with a code-specialised model into LanceDB, and hybrid "
+     "vector and full-text search retrieves the relevant chunks from a corpus of roughly 70,000. A Rust CLI "
+     "streams responses into the terminal, a Python sidecar handles embeddings, and a TUI front end is in "
+     "development. Everything runs on-device and stays usable on modest hardware.",
+     "RUST · PYTHON · LANCEDB · LLAMA.CPP · HYBRID RAG · LOCAL SLM"),
+    ("CONDUIT",
+     "A local-first MCP gateway that sits between AI agent clients such as Claude Desktop and Cursor and multiple "
+     "backend MCP servers. It aggregates and namespaces their tools behind one endpoint, and applies masking, "
+     "blocking and parameter-mutation rules, with Lua hooks for custom behavior, to everything passing through. "
+     "Built as a Rust workspace with stdio and SSE transports and SQLite storage, it ships a SolidJS dashboard "
+     "embedded in the binary, giving live session inspection and a REST observability API from a single local "
+     "process.",
+     "RUST · SOLIDJS · TYPESCRIPT · SQLITE · AXUM · MCP"),
+    ("MARKITDOWN-RUST-PY",
+     "A Rust-core reimplementation of MarkItDown, exposed to Python through PyO3. It converts documents such as "
+     "CSV and HTML into clean Markdown with a small memory footprint and fast start-up, aimed at document "
+     "ingestion pipelines that feed LLM and RAG workflows. It is built in phases: the CSV and HTML converters are "
+     "in place and more formats are on the way, all behind a plain Python interface.",
+     "RUST · PYO3 · PYTHON · MARKDOWN"),
+    ("POSEFIT WEB",
+     "A browser-based AI fitness coach that estimates body pose from the camera feed in real time. A Rust core "
+     "compiled to WebAssembly works alongside MediaPipe to process pose landmarks, and a React interface turns "
+     "them into live feedback while you exercise. It runs as a web app deployed on Vercel, so there is nothing "
+     "to install and the analysis happens in the browser.",
+     "RUST · WASM · MEDIAPIPE · REACT · VERCEL"),
+    ("NOVELREAD",
+     "A lightweight, mobile-friendly reading platform for discovering, organizing and reading digital books and "
+     "documents through a clean interface tuned for mobile performance. Built with cloud integration in mind, it "
+     "lets readers open their library on any device, synchronize progress and keep content organized without "
+     "relying on local storage. The streamlined architecture favors fast loading and efficient resource use, so "
+     "reading stays smooth even on devices with limited resources: simple, portable and accessible, with the "
+     "reach of the cloud.",
+     "MOBILE · CLOUD SYNC · LIGHTWEIGHT · READING"),
 ]
 
 STACK: list[tuple[str, str]] = [
@@ -102,11 +144,11 @@ def header(ink: str) -> str:
     {t(48, 274, "focus  ▸", 12.5, "dim", ls=1)}
     {t(128, 274, "local-first AI · Rust & Python systems · terminal interfaces · offline agents", 12.5, "accent", ls=1)}
   </g>
-  <g class="fade a5">{t(48, 300, "python ai/ml at kody technolab ltd · ahmedabad", 12.5, "dim", ls=1)}</g>
+  <g class="fade a5">{t(48, 300, "builds AI that runs on the hardware people already own", 12.5, "dim", ls=1)}</g>
   <line class="draw a5" x1="48" y1="342" x2="952" y2="342" stroke="var(--rule)" stroke-width="1"/>
   <g class="fade a6">
     {''.join(parts)}
-    {t(952, 374, "UVPCE — 2023 / 2027", 11.5, "muted", ls=3, anchor="end")}
+    {t(952, 374, "SYSTEMS · AI · TOOLING", 11.5, "muted", ls=3, anchor="end")}
   </g>"""
     return wrap(1000, 400, f"{NAME} — AI/ML Engineer", css, body, ink)
 
@@ -137,17 +179,17 @@ def whoami(ink: str) -> str:
     .a1{animation-delay:.1s} .a2{animation-delay:.2s} .a3{animation-delay:.35s} .a4{animation-delay:.5s} .a5{animation-delay:.65s} .a6{animation-delay:.8s}
     """ + REDUCE % ".rise { animation: none; opacity: 1; }"
     body = f"""
-  {t(48, 32, "third-year Computer Engineering (AI) student at U. V. Patel College of Engineering.", 16, cls="rise a1")}
-  {t(48, 60, "building local-first AI — Rust cores · Python orchestration · small language models.", 16, cls="rise a2")}
+  {t(48, 32, "I build AI systems that run where people already are: offline, lightweight and private.", 16, cls="rise a1")}
+  {t(48, 60, "Rust cores, Python orchestration, small language models, and thin interfaces on top.", 16, cls="rise a2")}
   {t(48, 88, "drawn to software that runs offline on modest hardware. small binaries, low memory, no cloud.", 15, "muted", cls="rise a3")}
   <line class="rise a4" x1="48" y1="116" x2="952" y2="116" stroke="var(--rule)" stroke-width="1" opacity=".5"/>
   {t(48, 148, "FOCUS", 11, "muted", cls="rise a4", ls=2.5)}
   {t(154, 148, "Local-first AI · Rust & Python systems · Offline agents · Terminal UI", 15, cls="rise a4")}
-  {t(48, 182, "WORK", 11, "muted", cls="rise a5", ls=2.5)}
-  {t(154, 182, "Python AI/ML — Kody Technolab Ltd, Ahmedabad", 15, "accent", cls="rise a5")}
-  {t(48, 216, "STUDY", 11, "muted", cls="rise a6", ls=2.5)}
-  {t(154, 216, "Ganpat University — B.Tech Computer Engineering, graduating 2027", 15, cls="rise a6")}"""
-    return wrap(1000, 236, "whoami — focus, work, study", css, body, ink)
+  {t(48, 182, "BUILDING", 11, "muted", cls="rise a5", ls=2.5)}
+  {t(154, 182, "Agents · workflow platforms · RAG tooling · browser & mobile apps", 15, "accent", cls="rise a5")}
+  {t(48, 216, "PRINCIPLE", 11, "muted", cls="rise a6", ls=2.5)}
+  {t(154, 216, "local-first by default, cloud as an optional upgrade", 15, cls="rise a6")}"""
+    return wrap(1000, 236, "whoami — focus, building, principle", css, body, ink)
 
 
 def edge(cx: float, cy: float, w: float, h: float, tx: float, ty: float) -> tuple[float, float]:
@@ -178,8 +220,8 @@ def ecosystem(ink: str) -> str:
         ("conduit", "Rust · SolidJS · MCP", 740, 95, "AGENT TOOLING", False),
         ("markitdown-rust-py", "Rust core · PyO3", 50, 351, "RUST ↔ PYTHON", False),
         ("posefit web", "Rust→WASM · MediaPipe", 740, 351, "BROWSER AI", False),
-        ("kody technolab", "Python AI/ML · work", 395, 78, "WORK", False),
-        ("ganpat university", "B.Tech CE (AI) · 2027", 395, 395, "STUDY", True),
+        ("orchestra", "AI pipelines · cloud", 395, 78, "CLOUD WORKFLOWS", False),
+        ("novelread", "Mobile · cloud sync", 395, 395, "MOBILE READING", True),
     ]
     cx, cy, cw, ch = 405, 222, 190, 56
     lines_w, lines_f = [], []
@@ -219,20 +261,26 @@ def projects(ink: str) -> str:
     .row { opacity:0; animation:reveal .55s cubic-bezier(.2,.7,.2,1) forwards; }
     .rule { stroke:var(--ink); stroke-width:1; }
     .title { fill:var(--ink); font-size:17px; font-weight:700; letter-spacing:.8px; }
+    .copy { fill:var(--ink); font-size:12px; }
     .meta { fill:var(--ink); font-size:11px; letter-spacing:.4px; }
     @keyframes reveal { from { opacity:0; } to { opacity:1; } }
-    .r1{animation-delay:.05s}.r2{animation-delay:.10s}.r3{animation-delay:.15s}.r4{animation-delay:.20s}
+    .r1{animation-delay:.05s}.r2{animation-delay:.10s}.r3{animation-delay:.15s}.r4{animation-delay:.20s}.r5{animation-delay:.25s}.r6{animation-delay:.30s}
     """ + REDUCE % ".row { animation:none; opacity:1; }"
-    rows = []
-    for i, (title, meta) in enumerate(PROJECTS):
+    rows, y = [], 20
+    for i, (title, para, tags) in enumerate(PROJECTS):
+        lines = wrap_text(para, 130)
+        copy = "".join(f'<text class="copy" x="48" y="{49 + 19*j}">{e(ln)}</text>' for j, ln in enumerate(lines))
+        meta_y = 49 + 19 * (len(lines) - 1) + 26
+        rule_y = meta_y + 18
         rows.append(
-            f'<g class="row r{i+1}" transform="translate(0 {20 + 78*i})">'
-            f'<text class="title" x="48" y="24">{i+1:02d} / {e(title)}</text>'
-            f'<text class="meta" x="48" y="48">{e(meta)}</text>'
-            f'<line class="rule" x1="48" y1="66" x2="952" y2="66"/></g>'
+            f'<g class="row r{i+1}" transform="translate(0 {y})">'
+            f'<text class="title" x="48" y="24">{i+1:02d} / {e(title)}</text>{copy}'
+            f'<text class="meta" x="48" y="{meta_y}">{e(tags)}</text>'
+            f'<line class="rule" x1="48" y1="{rule_y}" x2="952" y2="{rule_y}"/></g>'
         )
+        y += rule_y + 26
     body = f'  <g class="mono">{"".join(rows)}</g>'
-    return wrap(1000, 20 + 78 * len(PROJECTS) + 4, "Four projects by " + NAME, css, body, ink)
+    return wrap(1000, y, f"{len(PROJECTS)} projects by " + NAME, css, body, ink)
 
 
 def timeline(ink: str) -> str:
@@ -332,7 +380,7 @@ def badge(label: str, ink: str) -> str:
     w = int(len(label) * 9.2 + 36)
     body = (f'  <rect x="0.5" y="0.5" width="{w-1}" height="27" rx="2" stroke="var(--rule)" fill="none"/>\n'
             f'  {t(w/2, 18, label, 11, ls=2.5, anchor="middle")}')
-    return wrap(w, 28, label, "", body, ink).replace("<svg ", f'<svg width="{w}" height="28" ', 1)
+    return wrap(w, 28, label, "", body, ink)
 
 
 def build() -> None:
