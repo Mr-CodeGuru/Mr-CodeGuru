@@ -1,0 +1,36 @@
+<svg viewBox="0 0 1000 310" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub statistics and repository languages">
+  <style>
+    :root { --bone:#000000; --muted:#000000; --dim:#000000; --rule:#000000; --accent:#000000; --ghost:#000000; --ink:#000000; }
+    .mono { font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    
+    .panel,.rule,.bar { fill:none; stroke:var(--rule); stroke-width:1; }
+    .fill { fill:var(--bone); }
+    .grow { transform:scaleX(0); transform-origin:left; animation:grow .8s cubic-bezier(.2,.7,.2,1) forwards; }
+    .g2{animation-delay:.1s}.g3{animation-delay:.2s}.g4{animation-delay:.3s}.g5{animation-delay:.4s}.g6{animation-delay:.5s}.g7{animation-delay:.6s}
+    @keyframes grow { to { transform:scaleX(1); } }
+    @media (prefers-reduced-motion: reduce) { .grow { animation:none; transform:scaleX(1); } }
+  </style>
+
+  <rect class="panel" x="24" y="20" width="456" height="270" rx="2"/>
+  <rect class="panel" x="520" y="20" width="456" height="270" rx="2"/>
+
+  <g class="mono">
+    <text class="mono " x="52" y="58" font-size="15" fill="var(--bone)" letter-spacing="2">GITHUB STATS</text>
+    <line class="rule" x1="52" y1="72" x2="452" y2="72"/>
+    <text class="mono " x="52" y="110" font-size="11" fill="var(--bone)" letter-spacing="1">TOTAL REPOSITORIES</text><text class="mono " x="436" y="110" font-size="13" fill="var(--bone)" text-anchor="end">60</text>
+    <text class="mono " x="52" y="146" font-size="11" fill="var(--bone)" letter-spacing="1">PROJECTS DOCUMENTED</text><text class="mono " x="436" y="146" font-size="13" fill="var(--bone)" text-anchor="end">17</text>
+    <text class="mono " x="52" y="182" font-size="11" fill="var(--bone)" letter-spacing="1">OPEN SOURCE</text><text class="mono " x="436" y="182" font-size="13" fill="var(--bone)" text-anchor="end">3</text>
+    <text class="mono " x="52" y="218" font-size="11" fill="var(--bone)" letter-spacing="1">SYSTEM SPECIALTY</text><text class="mono " x="436" y="218" font-size="13" fill="var(--bone)" text-anchor="end">LOCAL-FIRST AI</text>
+    <text class="mono " x="52" y="254" font-size="11" fill="var(--bone)" letter-spacing="1">CURRENT STATUS</text><text class="mono " x="436" y="254" font-size="13" fill="var(--bone)" text-anchor="end">BUILDING</text>
+
+    <text class="mono " x="548" y="58" font-size="15" fill="var(--bone)" letter-spacing="2">LANGUAGES BY REPOSITORY</text>
+    <line class="rule" x1="548" y1="72" x2="948" y2="72"/>
+    <text class="mono " x="548" y="98" font-size="10" fill="var(--bone)">RUST</text><rect class="bar" x="660" y="89" width="270" height="10"/><rect class="fill grow" x="660" y="89" width="270" height="10"/>
+    <text class="mono " x="548" y="125" font-size="10" fill="var(--bone)">PYTHON</text><rect class="bar" x="660" y="116" width="270" height="10"/><rect class="fill grow g2" x="660" y="116" width="183" height="10"/>
+    <text class="mono " x="548" y="152" font-size="10" fill="var(--bone)">TYPESCRIPT</text><rect class="bar" x="660" y="143" width="270" height="10"/><rect class="fill grow g3" x="660" y="143" width="125" height="10"/>
+    <text class="mono " x="548" y="179" font-size="10" fill="var(--bone)">HTML</text><rect class="bar" x="660" y="170" width="270" height="10"/><rect class="fill grow g4" x="660" y="170" width="97" height="10"/>
+    <text class="mono " x="548" y="206" font-size="10" fill="var(--bone)">JAVASCRIPT</text><rect class="bar" x="660" y="197" width="270" height="10"/><rect class="fill grow g5" x="660" y="197" width="59" height="10"/>
+    <text class="mono " x="548" y="233" font-size="10" fill="var(--bone)">SHELL</text><rect class="bar" x="660" y="224" width="270" height="10"/><rect class="fill grow g6" x="660" y="224" width="28" height="10"/>
+    <text class="mono " x="548" y="260" font-size="10" fill="var(--bone)">WASM</text><rect class="bar" x="660" y="251" width="270" height="10"/><rect class="fill grow g7" x="660" y="251" width="12" height="10"/>
+  </g>
+</svg>

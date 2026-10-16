@@ -100,7 +100,7 @@ PROJECTS: list[tuple[str, str, str]] = [
 ]
 
 STACK: list[tuple[str, str]] = [
-    ("LANGUAGES", "Rust · Python · TypeScript · JavaScript"),
+    ("LANGUAGES", "Rust · Python · TypeScript · HTML · JavaScript · Shell · WebAssembly"),
     ("AI / ML", "Small language models · GGUF · llama.cpp · hybrid RAG · MediaPipe"),
     ("SYSTEMS", "Tokio · Axum · PyO3 · WebAssembly · JSON-RPC · MCP"),
     ("WEB", "React · SolidJS · Next.js · Tailwind"),
@@ -109,8 +109,8 @@ STACK: list[tuple[str, str]] = [
 ]
 
 SECTIONS = [("01", "WHOAMI", "whoami"), ("02", "SYSTEM MAP", "system-map"),
-            ("03", "PROJECTS", "projects"), ("04", "THE ROUTE", "the-route"),
-            ("05", "STACK", "stack")]
+            ("03", "PROJECTS", "projects"), ("04", "TELEMETRY", "telemetry"),
+            ("05", "THE ROUTE", "the-route"), ("06", "STACK", "stack")]
 # ───────────────────────────────────────────────────────────────────
 
 
@@ -283,6 +283,121 @@ def projects(ink: str) -> str:
     return wrap(1000, y, f"{len(PROJECTS)} projects by " + NAME, css, body, ink)
 
 
+def telemetry(ink: str) -> str:
+    css = """
+    .bar { transform: scaleX(0); animation: grow 1.2s cubic-bezier(.2,.7,.2,1) forwards; }
+    @keyframes grow { to { transform: scaleX(1); } }
+    .g1{transform-origin:48px 0;animation-delay:.25s}.g2{transform-origin:48px 0;animation-delay:.38s}.g3{transform-origin:48px 0;animation-delay:.51s}
+    .g4{transform-origin:48px 0;animation-delay:.64s}.g5{transform-origin:48px 0;animation-delay:.77s}.g6{transform-origin:48px 0;animation-delay:.90s}.g7{transform-origin:48px 0;animation-delay:1.03s}
+    .spark { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 2.2s cubic-bezier(.6,0,.2,1) .5s forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .dot { opacity: 0; animation: fade .4s ease forwards; }
+    .d1{animation-delay:1.0s}.d2{animation-delay:1.3s}.d3{animation-delay:1.6s}.d4{animation-delay:1.9s}.d5{animation-delay:2.2s}.d6{animation-delay:2.5s}
+    @keyframes fade { to { opacity: 1; } }
+    .rise { opacity: 0; animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+    @keyframes rise { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .n1{animation-delay:.5s}.n2{animation-delay:.7s}.n3{animation-delay:.9s}.n4{animation-delay:1.1s}
+    .ping { animation: ping 2.2s ease-out infinite; transform-origin: 622px 105px; }
+    @keyframes ping { 0%{transform:scale(.4);opacity:.9} 80%,100%{transform:scale(2.8);opacity:0} }
+    """ + REDUCE % (
+        ".bar,.spark,.dot,.rise,.ping { animation: none; } "
+        ".bar{transform:scaleX(1)} .spark{stroke-dashoffset:0} .dot,.rise{opacity:1} .ping{opacity:0}"
+    )
+    body = f"""
+  <line x1="48" y1="40" x2="952" y2="40" stroke="var(--rule)"/>
+  {t(48, 28, "TELEMETRY — WHAT THE HANDS ARE DOING", 11, "muted", ls=3.5)}
+  {t(952, 28, "FIG. 02", 11, "muted", ls=3.5, anchor="end")}
+  <line x1="360" y1="64" x2="360" y2="296" stroke="var(--rule)" opacity=".4"/>
+  <line x1="688" y1="64" x2="688" y2="296" stroke="var(--rule)" opacity=".4"/>
+
+  <!-- language bars: rust 78, python 53, ts 36, html 28, js 17, shell 8, wasm 3 -->
+  {t(48, 76, "LANGUAGE DISTRIBUTION · EST.", 10, "dim", ls=2.5)}
+  <g class="mono" font-size="11">
+    {t(48, 102, "rust", 11)}         <rect class="bar g1" x="48" y="110" width="230" height="5" fill="var(--accent)"/>{t(288, 117, "35%", 10, "muted")}
+    {t(48, 131, "python", 11)}       <rect class="bar g2" x="48" y="139" width="158" height="5" fill="var(--bone)"/>{t(216, 146, "24%", 10, "muted")}
+    {t(48, 160, "typescript", 11)}   <rect class="bar g3" x="48" y="168" width="105" height="5" fill="var(--bone)"/>{t(163, 175, "16%", 10, "muted")}
+    {t(48, 189, "html", 11)}         <rect class="bar g4" x="48" y="197" width="85"  height="5" fill="var(--bone)"/>{t(143, 204, "13%", 10, "muted")}
+    {t(48, 218, "javascript", 11)}   <rect class="bar g5" x="48" y="226" width="52"  height="5" fill="var(--bone)"/>{t(110, 233, "8%", 10, "muted")}
+    {t(48, 247, "shell", 11)}        <rect class="bar g6" x="48" y="255" width="24"  height="5" fill="var(--bone)"/>{t(82, 262, "3%", 10, "muted")}
+    {t(48, 276, "wasm", 11)}         <rect class="bar g7" x="48" y="284" width="12"  height="5" fill="var(--bone)"/>{t(70, 291, "1%", 10, "muted")}
+  </g>
+
+  <!-- shipping velocity -->
+  {t(392, 76, "SHIPPING VELOCITY · 2023 → 2026", 10, "dim", ls=2.5)}
+  <g>
+    <line x1="392" y1="252" x2="656" y2="252" stroke="var(--rule)"/>
+    <polyline class="spark" points="392,245 440,235 488,212 536,178 584,136 622,105 656,84" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+    <circle class="dot d1" cx="440" cy="235" r="2.5" fill="var(--bone)"/>
+    <circle class="dot d2" cx="488" cy="212" r="2.5" fill="var(--bone)"/>
+    <circle class="dot d3" cx="536" cy="178" r="2.5" fill="var(--bone)"/>
+    <circle class="dot d4" cx="584" cy="136" r="2.5" fill="var(--bone)"/>
+    <circle class="ping" cx="622" cy="105" r="4" stroke="var(--accent)" fill="none"/>
+    <circle class="dot d5" cx="622" cy="105" r="3" fill="var(--accent)"/>
+    {t(392, 272, "'23", 9.5, "dim", ls=1.5)}
+    {t(475, 272, "'24", 9.5, "dim", ls=1.5)}
+    {t(560, 272, "'25", 9.5, "dim", ls=1.5)}
+    {t(640, 272, "'26", 9.5, "dim", ls=1.5)}
+    <g class="dot d6">
+      {t(392, 300, "trend — accelerating", 10, "accent", ls=1.5)}
+    </g>
+  </g>
+
+  <!-- profile counters -->
+  <g>
+    <g class="rise n1">
+      {t(720, 118, "60", 44)}
+      {t(790, 112, "REPOSITORIES", 10, "muted", ls=2.5)}
+    </g>
+    <g class="rise n2">
+      {t(720, 178, "17", 44)}
+      {t(790, 172, "PROJECTS DOCUMENTED", 10, "muted", ls=2.5)}
+    </g>
+    <g class="rise n3">
+      {t(720, 238, "3", 44)}
+      {t(790, 232, "OPEN SOURCE", 10, "muted", ls=2.5)}
+    </g>
+    <g class="rise n4">
+      {t(718, 298, "∞", 44, "accent")}
+      {t(790, 292, "INFINITE IDEAS MORE", 10, "muted", ls=2.5)}
+    </g>
+  </g>"""
+    return wrap(1000, 330, "Telemetry: language distribution, shipping velocity 2023 to 2026, counters — 60 repositories, 17 projects, 3 open source", css, body, ink)
+
+
+def github_stats(ink: str) -> str:
+    css = """
+    .panel,.rule,.bar { fill:none; stroke:var(--rule); stroke-width:1; }
+    .fill { fill:var(--bone); }
+    .grow { transform:scaleX(0); transform-origin:left; animation:grow .8s cubic-bezier(.2,.7,.2,1) forwards; }
+    .g2{animation-delay:.1s}.g3{animation-delay:.2s}.g4{animation-delay:.3s}.g5{animation-delay:.4s}.g6{animation-delay:.5s}.g7{animation-delay:.6s}
+    @keyframes grow { to { transform:scaleX(1); } }
+    """ + REDUCE % ".grow { animation:none; transform:scaleX(1); }"
+    body = f"""
+  <rect class="panel" x="24" y="20" width="456" height="270" rx="2"/>
+  <rect class="panel" x="520" y="20" width="456" height="270" rx="2"/>
+
+  <g class="mono">
+    {t(52, 58, "GITHUB STATS", 15, ls=2)}
+    <line class="rule" x1="52" y1="72" x2="452" y2="72"/>
+    {t(52, 110, "TOTAL REPOSITORIES", 11, ls=1)}{t(436, 110, "60", 13, anchor="end")}
+    {t(52, 146, "PROJECTS DOCUMENTED", 11, ls=1)}{t(436, 146, "17", 13, anchor="end")}
+    {t(52, 182, "OPEN SOURCE", 11, ls=1)}{t(436, 182, "3", 13, anchor="end")}
+    {t(52, 218, "SYSTEM SPECIALTY", 11, ls=1)}{t(436, 218, "LOCAL-FIRST AI", 13, anchor="end")}
+    {t(52, 254, "CURRENT STATUS", 11, ls=1)}{t(436, 254, "BUILDING", 13, anchor="end")}
+
+    {t(548, 58, "LANGUAGES BY REPOSITORY", 15, ls=2)}
+    <line class="rule" x1="548" y1="72" x2="948" y2="72"/>
+    {t(548, 98, "RUST", 10)}<rect class="bar" x="660" y="89" width="270" height="10"/><rect class="fill grow" x="660" y="89" width="270" height="10"/>
+    {t(548, 125, "PYTHON", 10)}<rect class="bar" x="660" y="116" width="270" height="10"/><rect class="fill grow g2" x="660" y="116" width="183" height="10"/>
+    {t(548, 152, "TYPESCRIPT", 10)}<rect class="bar" x="660" y="143" width="270" height="10"/><rect class="fill grow g3" x="660" y="143" width="125" height="10"/>
+    {t(548, 179, "HTML", 10)}<rect class="bar" x="660" y="170" width="270" height="10"/><rect class="fill grow g4" x="660" y="170" width="97" height="10"/>
+    {t(548, 206, "JAVASCRIPT", 10)}<rect class="bar" x="660" y="197" width="270" height="10"/><rect class="fill grow g5" x="660" y="197" width="59" height="10"/>
+    {t(548, 233, "SHELL", 10)}<rect class="bar" x="660" y="224" width="270" height="10"/><rect class="fill grow g6" x="660" y="224" width="28" height="10"/>
+    {t(548, 260, "WASM", 10)}<rect class="bar" x="660" y="251" width="270" height="10"/><rect class="fill grow g7" x="660" y="251" width="12" height="10"/>
+  </g>"""
+    return wrap(1000, 310, "GitHub statistics and repository languages", css, body, ink)
+
+
 def timeline(ink: str) -> str:
     css = """
     .axis { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 1110; stroke-dashoffset: 1110; animation: draw 2.4s cubic-bezier(.6,0,.2,1) forwards; }
@@ -310,7 +425,7 @@ def timeline(ink: str) -> str:
     body = f"""
   <line x1="48" y1="40" x2="1152" y2="40" stroke="var(--rule)"/>
   {t(48, 28, "THE ROUTE SO FAR", 11, "muted", ls=3.5)}
-  {t(1152, 28, "FIG. 02", 11, "muted", ls=3.5, anchor="end")}
+  {t(1152, 28, "FIG. 03", 11, "muted", ls=3.5, anchor="end")}
   <line class="axis" x1="48" y1="125" x2="1158" y2="125"/>
   {mark(110, True, "2023", "B.Tech CE (AI) · UVPCE", "m1")}
   {mark(370, False, "JUL 2026", "Python AI/ML · Kody Technolab", "m2")}
@@ -385,9 +500,18 @@ def badge(label: str, ink: str) -> str:
 
 def build() -> None:
     files: dict[str, callable] = {
-        "header-v1": header, "whoami": whoami, "ecosystem": ecosystem, "projects": projects,
-        "timeline": timeline, "experience": experience, "stack": stack, "footer": footer,
-        "badge-github": lambda i: badge("GITHUB", i), "badge-linkedin": lambda i: badge("LINKEDIN", i),
+        "header-v1": header,
+        "whoami": whoami,
+        "ecosystem": ecosystem,
+        "projects": projects,
+        "telemetry": telemetry,
+        "github-stats": github_stats,
+        "timeline": timeline,
+        "experience": experience,
+        "stack": stack,
+        "footer": footer,
+        "badge-github": lambda i: badge("GITHUB", i),
+        "badge-linkedin": lambda i: badge("LINKEDIN", i),
     }
     for num, name, slug in SECTIONS:
         files[f"s{num}"] = (lambda n, nm, sl: lambda i: section(n, nm, sl, i))(num, name, slug)
