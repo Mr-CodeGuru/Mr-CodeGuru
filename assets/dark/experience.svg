@@ -1,0 +1,23 @@
+<svg viewBox="0 0 1000 186" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Experience — Kody Technolab Ltd, Ganpat University">
+  <style>
+    :root { --bone:#FFFFFF; --muted:#FFFFFF; --dim:#FFFFFF; --rule:#FFFFFF; --accent:#FFFFFF; --ghost:#FFFFFF; --ink:#FFFFFF; }
+    .mono { font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    
+    .rise { opacity: 0; animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+    @keyframes rise { from { opacity:0;transform:translateY(8px); } to { opacity:1;transform:translateY(0); } }
+    .a1{animation-delay:.15s} .a2{animation-delay:.35s}
+    @media (prefers-reduced-motion: reduce) { .rise { animation: none; opacity: 1; } }
+  </style>
+
+  <line x1="120" y1="10" x2="120" y2="176" stroke="var(--rule)" stroke-width="1" opacity=".4"/>
+  <g class="rise a1">
+    <text class="mono " x="48" y="42" font-size="12" fill="var(--accent)" letter-spacing="2">2026 –</text>
+    <text class="mono " x="136" y="42" font-size="15" fill="var(--bone)">Kody Technolab Ltd · Python AI/ML · Ahmedabad</text>
+    <text class="mono " x="136" y="68" font-size="14" fill="var(--muted)">joined 14 July 2026 through college placement</text>
+  </g>
+  <g class="rise a2">
+    <text class="mono " x="48" y="130" font-size="12" fill="var(--accent)" letter-spacing="2">2023 –</text>
+    <text class="mono " x="136" y="130" font-size="15" fill="var(--bone)">U. V. Patel College of Engineering, Ganpat University · B.Tech</text>
+    <text class="mono " x="136" y="156" font-size="14" fill="var(--muted)">Computer Engineering · AI specialization · graduating 2027 · CGPA 8.7+</text>
+  </g>
+</svg>

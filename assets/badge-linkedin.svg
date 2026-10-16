@@ -1,0 +1,9 @@
+<svg viewBox="0 0 109 28" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LINKEDIN">
+  <style>
+    :root { --bone:#000000; --muted:#000000; --dim:#000000; --rule:#000000; --accent:#000000; --ghost:#000000; --ink:#000000; }
+    .mono { font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    
+  </style>
+  <rect x="0.5" y="0.5" width="108" height="27" rx="2" stroke="var(--rule)" fill="none"/>
+  <text class="mono " x="54.5" y="18" font-size="11" fill="var(--bone)" letter-spacing="2.5" text-anchor="middle">LINKEDIN</text>
+</svg>
