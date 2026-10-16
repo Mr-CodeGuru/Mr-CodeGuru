@@ -380,7 +380,7 @@ def badge(label: str, ink: str) -> str:
     w = int(len(label) * 9.2 + 36)
     body = (f'  <rect x="0.5" y="0.5" width="{w-1}" height="27" rx="2" stroke="var(--rule)" fill="none"/>\n'
             f'  {t(w/2, 18, label, 11, ls=2.5, anchor="middle")}')
-    return wrap(w, 28, label, "", body, ink)
+    return wrap(w, 28, label, "", body, ink).replace("<svg ", f'<svg width="{w}" height="28" ', 1)
 
 
 def build() -> None:
